@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "./dist",
-  "projectname": "rita",
-  "description": "一个宠物药品查询平台",
+  "projectname": "myApp",
+  "description": "a good app",
   "appid": "touristappid",
   "setting": {
     "urlCheck": true,

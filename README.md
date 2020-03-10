@@ -1,2 +1,0 @@
-# rita
-taro project rito
