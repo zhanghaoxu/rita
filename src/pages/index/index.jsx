@@ -28,12 +28,16 @@ class Index extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
+
     console.log(this.props, nextProps)
   }
 
   componentWillUnmount () { }
 
-  componentDidShow () { }
+  componentDidShow () {
+    console.log(333)
+    this.initData()
+  }
 
   componentDidHide () { }
 
