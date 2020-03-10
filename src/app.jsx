@@ -3,7 +3,7 @@ import { Provider } from '@tarojs/redux'
 
 import Index from './pages/index'
 import auth from './utils/auth'
-import configStore from './store'
+import store from './store'
 
 import './app.less'
 
@@ -13,7 +13,6 @@ import './app.less'
 //   require('nerv-devtools')
 // }
 
-const store = configStore()
 
 class App extends Component {
 
