@@ -16,17 +16,7 @@ import './app.less'
 
 class App extends Component {
 
-  config = {
-    pages: [
-      'pages/index/index'
-    ],
-    window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
-    }
-  }
+
 
   componentDidMount () {
     auth.wxCheckSession()
@@ -37,6 +27,33 @@ class App extends Component {
   componentDidHide () {}
 
   componentDidCatchError () {}
+
+  config = {
+    pages: [
+      'pages/index/index',
+      "pages/find/index",
+      "pages/my/index",
+    ],
+    tabBar: {
+      "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      }, {
+        "pagePath": "pages/find/index",
+        "text": "发现"
+      }, {
+        "pagePath": "pages/my/index",
+        "text": "我的"
+      }]
+    },
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black'
+    },
+
+  }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数

@@ -1,6 +1,6 @@
 'use strict'
 import {IS_LOGIN,IS_REGISTER} from '../constants/auth'
-import {isLogin,isRegister} from '../../apis/auth'
+import {isLogin as isLoginApi,isRegister as isRegisterApi} from '../../apis/auth'
 
 export function setIsLogin(isLogin){
   return {
@@ -19,7 +19,7 @@ export function setIsRegister(isRegister){
 // 异步的 action
 export function asyncGetIsLogin () {
   return dispatch => {
-    isLogin().then(v=>{
+    isLoginApi().then(v=>{
       dispatch(setIsLogin(v.isLogin))
     }).catch(e=>{
       //todo log error
@@ -30,7 +30,7 @@ export function asyncGetIsLogin () {
 // 异步的 action
 export function asyncGetIsRegister () {
   return dispatch => {
-    isRegister().then(v=>{
+    isRegisterApi().then(v=>{
       dispatch(setIsRegister(v.isRegister))
     }).catch(e=>{
       //todo log error
