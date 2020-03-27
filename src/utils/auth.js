@@ -7,14 +7,16 @@ import {setIsLogin} from '../store/actions/auth'
 
 class Auth {
   async isRegistered(){
-    if(this.isWxLoginRequesting) return
+    if(this.isRegisteredRequesting) return
+
     try{
+      this.isRegisteredRequesting = true
       const code = await this.wxLoginRequest();
 
       const result = await isRegisterRequest({
         code
       })
-
+      this.isRegisteredRequesting = false
       const {isRegister,session} = result
       if(isRegister){
 
@@ -29,9 +31,12 @@ class Auth {
   }
 
   async register(){
-    if(this.isWxLoginRequesting) return
+    if(this.isRegisterRequesting) return
+
     try{
+      this.isRegisterRequesting = true
       const code = await this.wxLoginRequest();
+
       const userInfo = await Taro.getUserInfo({
         withCredentials:true,
         lang:'zh_CN'
@@ -43,7 +48,7 @@ class Auth {
       }
 
       const {user,session} = await register(query);
-
+      this.isRegisterRequesting = false
       request.updateSession(session)
 
     }catch(e){
@@ -63,14 +68,14 @@ class Auth {
 
   async wxLoginRequest() {
     // 简单封装wx.login 调用加锁 避免重复调用 支持promise化
-    this.isWxLoginRequesting = true
+
     return new Promise((resolve, reject) => {
       Taro.login().then(v=>{
         resolve(v.code);
-        this.isWxLoginRequesting = false;
+
       }).catch(e=>{
         reject(e);
-        this.isWxLoginRequesting = false;
+
       })
     })
   }
